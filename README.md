@@ -1,5 +1,26 @@
-<h2>WordPress Page Templater by Harri Bell-Thomas</h2>
+#WordPress Page Templater
 
-A useful bit of code from <a href="https://github.com/HarriBellThomas">Harri Bell-Thomas</a> you can use to dynamically create WordPress Page Templates with PHP.
+A fork of Page Templater plugin by WPExplorer (http://www.wpexplorer.com/wordpress-page-templates-plugin/). 
 
-Read the full tutorial on <a href="http://www.wpexplorer.com/wordpress-page-templates-plugin" title="Adding Page Templates to WordPress with a Plugin">how to add Page Templates to WordPress with a plugin</a>
+This plugin has a little bit different scope than the original one, as it adds virtual page templates to WP admin that do not need a file for each of them to be existing in the plugin/theme. That means that the page templates will probably use a base template (such as `singular.php` or `page.php`).
+
+##Hooks
+
+Drop the plugin into your plugins folder, use the hook to add templates' filenames and names (no actual files need to be created, but filenames will serve as ids).
+
+##Hooks
+
+Use `pagetemplater_change_custom_templates_list` filter to add new templates from a theme:
+
+````
+function pagetemplater_return_custom_templates($plugin_templates) {
+  $theme_templates = array( 
+    'good.php' => 'It\'s Good to Be Bad',
+    'heybabe.php' => 'Hey babe',
+  );
+  $custom_templates = array_merge($plugin_templates, $theme_templates);
+  return $custom_templates;
+}
+
+add_filter( 'pagetemplater_change_custom_templates_list', 'pagetemplater_return_custom_templates' );
+````

@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Page Template Plugin : 'Good To Be Bad'
-Plugin URI: http://www.wpexplorer.com/wordpress-page-templates-plugin/
-Version: 1.1.0
-Author: WPExplorer
-Author URI: http://www.wpexplorer.com/
+Plugin Name: Page Templater
+Plugin URI: https://github.com/certainlyakey/page-templater.git
+Description: Adds virtual page templates to WP admin that do not need a file for each of them to be existing in a theme
+Version: 1.2.0
+Author: WPExplorer and Aleksandr Beliaev (Exove)
 */
 
 class PageTemplater {
@@ -72,12 +72,6 @@ class PageTemplater {
 			array( $this, 'view_project_template') 
 		);
 
-
-		// Add your templates to this array.
-		$this->templates = array(
-			'goodtobebad-template.php' => 'It\'s Good to Be Bad',
-		);
-			
 	} 
 
 	/**
@@ -85,13 +79,14 @@ class PageTemplater {
 	 *
 	 */
 	public function add_new_template( $posts_templates ) {
+		$posts_templates = apply_filters( 'pagetemplater_change_custom_templates_list', $posts_templates );
 		$posts_templates = array_merge( $posts_templates, $this->templates );
 		return $posts_templates;
 	}
 
 	/**
 	 * Adds our template to the pages cache in order to trick WordPress
-	 * into thinking the template file exists where it doens't really exist.
+	 * into thinking the template file exists where it doesn't really exist.
 	 */
 	public function register_project_templates( $atts ) {
 
@@ -147,8 +142,6 @@ class PageTemplater {
 		// Just to be safe, we check if the file exist first
 		if ( file_exists( $file ) ) {
 			return $file;
-		} else {
-			echo $file;
 		}
 
 		// Return template
