@@ -1,0 +1,9 @@
+{
+  "name": "certainlyakey/page-templater",
+  "description": "Adds virtual page templates to WP admin that do not need a file for each of them to be existing in a theme.",
+  "type": "wordpress-plugin",
+  "minimum-stability": "dev",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}
