@@ -1,14 +1,14 @@
-#WordPress Page Templater
+# WordPress Page Templater
 
 A fork of Page Templater plugin by WPExplorer (http://www.wpexplorer.com/wordpress-page-templates-plugin/). 
 
 This plugin has a little bit different scope than the original one, as it adds virtual page templates to WP admin that do not need a file for each of them to be existing in the plugin/theme. That means that the page templates will probably use a base template (such as `singular.php` or `page.php`).
 
-##Hooks
+## Installation
 
 Drop the plugin into your plugins folder, use the hook to add templates' filenames and names (no actual files need to be created, but filenames will serve as ids).
 
-##Hooks
+## Hooks
 
 Use `pagetemplater_change_custom_templates_list` filter to add new templates from a theme:
 
