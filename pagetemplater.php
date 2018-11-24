@@ -4,7 +4,7 @@ Plugin Name: Page Templater
 Plugin URI: https://github.com/certainlyakey/page-templater.git
 Description: Adds virtual page templates to WP admin that do not need a file for each of them to be existing in a theme
 Version: 1.2.0
-Author: WPExplorer and Aleksandr Beliaev (Exove)
+Author: WPExplorer and Aleksandr Beliaev
 */
 
 class PageTemplater {
